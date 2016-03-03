@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FitTable</title>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div data-role="page" data-theme="a">
+  <div data-role="header" data-position="inline">
+    <h1><%= yield :title %></h1>
+    <%= yield :buttons %>
+  </div>
+
+  <div class="ui-content" role="main">
+    <%= yield %>
+  </div>
+
+</div>
+</body>
+</html>
