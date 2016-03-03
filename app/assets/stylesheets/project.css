@@ -1,0 +1,14 @@
+.center_title {
+    text-align: center;
+}
+
+.center_image {
+    margin: 0 auto;
+    display: block;
+}
+
+.logo {
+    max-height: 350px;
+    height: auto;
+    width: 100%;
+}
