@@ -1,3 +1,30 @@
 <%= content_for :title, "FitTable" %>
-<h2 class="center_title">¡Bienvenido a Fit Table!</h2>
-<%= image_tag 'fittable.png', class: "center_image logo" %>
+<h1 class="center_title">¡Bienvenido a FitTable!</h1>
+<h4 class="center_title">La aplicación perfecta para fijar tu tabla de entrenamiento y compartir ejercicios con el resto
+  del mundo</h4>
+<!--<%= image_tag 'fittable.jpg', class: "center_image logo" %>-->
+
+<%= form_tag session_path, html: {"data-ajax": false} do %>
+    <div class="field">
+      <%= label_tag :email %></br>
+      <%= text_field_tag :email, nil, placeholder: "Email" %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :username %></br>
+      <%= text_field_tag :username, nil, placeholder: "Username" %>
+    </div>
+
+    <div class="field">
+      <%= label_tag :password %></br>
+      <%= password_field_tag :password, nil, placeholder: "Password" %>
+    </div>
+    <%= submit_tag 'Iniciar sesión', data: {icon: "user", "icon-pos": "right"} %>
+<% end %>
+
+<script>
+  $(document).ready(function () {
+        $("form br").remove();
+      }
+  );
+</script>
