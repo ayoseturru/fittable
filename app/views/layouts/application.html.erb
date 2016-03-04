@@ -17,6 +17,14 @@
     <%= yield %>
   </div>
 
+  <%= render 'layouts/dialogs' %>
 </div>
 </body>
 </html>
+
+<script>
+  $(document).ready(function () {
+        $("form br").remove();
+      }
+  );
+</script>

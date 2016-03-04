@@ -1,14 +1,12 @@
 <%= content_for :title, "FitTable" %>
 <h1 class="center_title">¡Bienvenido a FitTable!</h1>
-<h4 class="center_title">La aplicación perfecta para fijar tu tabla de entrenamiento y compartir ejercicios con el resto
-  del mundo</h4>
+<h3 class="center_title">La aplicación perfecta para fijar tu tabla de entrenamiento y compartir ejercicios con el resto
+  del mundo</h3>
 <!--<%= image_tag 'fittable.jpg', class: "center_image logo" %>-->
 
-<%= form_tag session_path, html: {"data-ajax": false} do %>
-    <div class="field">
-      <%= label_tag :email %></br>
-      <%= text_field_tag :email, nil, placeholder: "Email" %>
-    </div>
+<br>
+<%= form_tag session_path, data: {"ajax": 'false'} do %>
+    <h4>¡Si ya eres usuario de FitTable inicia sesión para acceder a tu plan de entrenamiento!</h4>
 
     <div class="field">
       <%= label_tag :username %></br>
@@ -19,12 +17,8 @@
       <%= label_tag :password %></br>
       <%= password_field_tag :password, nil, placeholder: "Password" %>
     </div>
-    <%= submit_tag 'Iniciar sesión', data: {icon: "user", "icon-pos": "right"} %>
+    <%= submit_tag 'Iniciar sesión', data: {icon: "user", iconpos: "right", role: "button"} %>
 <% end %>
 
-<script>
-  $(document).ready(function () {
-        $("form br").remove();
-      }
-  );
-</script>
+<h4>¿Aún no eres usuario de FitTable?</h4>
+<a href="/users/new" data-role="button" data-icon="action" data-ajax="false" data-iconpos="right">Registrarme</a>
