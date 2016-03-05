@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :publications, :dependent => :delete_all
   attr_accessor :password
   before_save :encrypt_new_password
   validates :email, uniqueness: {case_sensitive: false, message: "Ya existe un usuario registrado con esa direccion de correo"}, length: {in: 6..40, message: "Correo inválido"}, format: {with: /\A(\S+)@(.+)\.(\S+)\z/, message: "Introduzca una direccion de correo válida"}

@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to articles_path, notice: 'User successfully created'
+      redirect_to root_url, notice: '¡Inicia sesion para empezar a usar FitTable!'
     else
       render action: :new
     end

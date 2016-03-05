@@ -1,4 +1,7 @@
 <%= content_for :title, "Registro" %>
+<% content_for :buttons do %>
+    <%= link_to 'Atrás', root_url, {:class => "ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"} %>
+<% end %>
 <%= render 'form' %>
 
 <% if @user.errors.any? %>
