@@ -1,0 +1,2 @@
+module PublicationAttachmentsHelper
+end

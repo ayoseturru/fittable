@@ -1,0 +1,28 @@
+<%= form_for @publication, html: {multipart: true, "data-ajax" => "false"} do |f| %>
+
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="field">
+      <%= f.label :category %>
+      <%= f.select :category, [['selecciona', ''], ['Piernas'], ['Espalda'], ['Brazos'], ['Abdominales']] %>
+    </div>
+
+    <div class="field ">
+      <%= f.label :description %>
+      <%= f.text_field :description %>
+    </div>
+
+    <%= f.fields_for :publication_attachments do |p| %>
+        <div class="field">
+          <%= p.label :image %><br>
+          <%= p.file_field :image, :multiple => true, name: "publication_attachments[image][]" %>
+        </div>
+    <% end %>
+
+    <div class="actions">
+      <%= f.submit @publication.description.present? ? "Actualizar" : "Crear" %>
+    </div>
+<% end %>

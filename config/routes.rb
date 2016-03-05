@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :publication_attachments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     end
   end
   resource :session, only: [:create, :destroy]
+  resource :publication_attachments
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
