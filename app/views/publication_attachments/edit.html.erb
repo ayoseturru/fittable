@@ -4,4 +4,6 @@
 
 <%= link_to 'Show', @publication_attachment %> |
 <%= link_to 'Back', publication_attachments_path %>
-<%= link_to "delete", @publication_attachment, data: {confirm: '¿seguro?'}, method: :delete, data: {ajax: false} %>
+<% if @publication_attachment.publication.owned_by?(current_user) %>
+    <%= link_to "delete", @publication_attachment, data: {confirm: '¿seguro?'}, method: :delete, data: {ajax: false} %>
+<% end %>

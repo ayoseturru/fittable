@@ -1,5 +1,6 @@
 class PublicationAttachmentsController < ApplicationController
   before_action :set_publication_attachment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate
 
   # GET /publication_attachments
   # GET /publication_attachments.json
