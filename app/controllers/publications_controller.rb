@@ -9,6 +9,7 @@ class PublicationsController < ApplicationController
   end
 
   def edit
+    @publication_attachment = @publication.publication_attachments
   end
 
   def search

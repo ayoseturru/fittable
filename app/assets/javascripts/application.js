@@ -13,4 +13,5 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.mobile
+//= require owl.carousel
 //= require_tree .

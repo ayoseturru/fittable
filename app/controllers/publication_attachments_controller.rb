@@ -51,9 +51,10 @@ class PublicationAttachmentsController < ApplicationController
   # DELETE /publication_attachments/1
   # DELETE /publication_attachments/1.json
   def destroy
+    @publication = @publication_attachment.publication
     @publication_attachment.destroy
     respond_to do |format|
-      format.html { redirect_to @publication_attachment.publication, notice: 'Publication attachment was successfully destroyed.' }
+      format.html { redirect_to @publication, notice: 'Publication attachment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

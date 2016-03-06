@@ -12,3 +12,13 @@
     height: auto;
     width: 100%;
 }
+
+.slide {
+    text-align: center;
+}
+
+.slide img {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+}

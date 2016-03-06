@@ -81,6 +81,8 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
+    owlcarousel-rails (1.1.3.3)
+      jquery-rails
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -155,6 +157,7 @@ DEPENDENCIES
   jquery-rails
   jquery_mobile_rails
   mini_magick
+  owlcarousel-rails
   rails (= 4.2.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

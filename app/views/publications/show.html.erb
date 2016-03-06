@@ -1,13 +1,36 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @publication.title %>
-</p>
-
-<% @publication_attachments.each do |p| %>
-    <%= image_tag p.image_url %>
-    <%= link_to "Edit Attachment", edit_publication_attachment_path(p)%>
+<%= content_for :title, "FitTable" %>
+<% content_for :buttons do %>
+    <%= link_to 'Atrás', publications_url, {"data-rel" => "back", :class => "ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"} %>
 <% end %>
 
-<%= link_to 'Edit', edit_publication_path(@publication), data: {ajax: false} %> |
+<h1 class="center_title">
+  <%= @publication.title %>
+</h1>
+
+<h4>Aclaración gráfica</h4>
+<div class="owl-carousel">
+  <% @publication_attachments.each do |p| %>
+      <div class="slide" style="width: 100%">
+        <%= image_tag p.image_url() %>
+        <br>
+        <%= link_to "Edit Attachment", edit_publication_attachment_path(p), class: "center_title" %>
+      </div>
+  <% end %>
+</div>
+
+<h4 style="text-align: justify"><%= @publication.description %></h4>
+
+<% if @publication.owned_by?(current_user) %>
+    <%= link_to 'Editar', edit_publication_path(@publication), data: {ajax: false, icon: "edit", role: "button"} %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+      navigation: true,
+      slideSpeed: 300,
+      paginationSpeed: 400,
+      singleItem: true
+    });
+  });
+</script>

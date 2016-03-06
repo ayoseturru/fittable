@@ -16,4 +16,6 @@
  *= require fitness
  *= require jquery.mobile.icons.min
  *= require project
+ *= require owl.carousel
+ *= require owl.theme
  */
