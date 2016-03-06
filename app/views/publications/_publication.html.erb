@@ -1,0 +1,8 @@
+<li class="ui-li-has-thumb">
+  <%= link_to publication do %>
+      <% if publication.publication_attachments.first %>
+          <%= image_tag publication.publication_attachments.first.image %>
+      <% end %>
+      <h3> <%= publication.title.capitalize %> por @<%= publication.user.username %></h3>
+  <% end %>
+</li>

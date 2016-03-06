@@ -1,21 +1,10 @@
-<%= form_for(@publication_attachment) do |f| %>
-  <% if @publication_attachment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@publication_attachment.errors.count, "error") %> prohibited this publication_attachment from being saved:</h2>
-
-      <ul>
-      <% @publication_attachment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= image_tag @publication_attachment.image %>
+<%= form_for(@publication_attachment, data: {ajax: false}) do |f| %>
+    <div class="field">
+      <%= f.label :image %><br>
+      <%= f.file_field :image %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :publication_id %><br>
-    <%= f.number_field :publication_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>

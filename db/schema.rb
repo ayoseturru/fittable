@@ -20,15 +20,21 @@ ActiveRecord::Schema.define(version: 20160305193631) do
     t.string   "image"
   end
 
-# Could not dump table "publications" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "email"
     t.string   "username"
     t.string   "hashed_password"
+  end
+
+  create_table "publications", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "description"
+    t.string   "category"
+    t.string   "title"
+    t.integer  "user_id"
   end
 
 end

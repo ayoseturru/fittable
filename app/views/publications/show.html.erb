@@ -7,7 +7,7 @@
 
 <% @publication_attachments.each do |p| %>
     <%= image_tag p.image_url %>
-    <%= link_to "Edit Attachment", edit_publication_attachment(p)%>
+    <%= link_to "Edit Attachment", edit_publication_attachment_path(p)%>
 <% end %>
 
-<%= link_to 'Edit', edit_publication_path(@publication) %> |
+<%= link_to 'Edit', edit_publication_path(@publication), data: {ajax: false} %> |

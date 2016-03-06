@@ -2,23 +2,23 @@
 
     <div class="field">
       <%= f.label :title %>
-      <%= f.text_field :title %>
+      <%= f.text_field :title, required: true %>
     </div>
 
     <div class="field">
       <%= f.label :category %>
-      <%= f.select :category, [['selecciona', ''], ['Piernas'], ['Espalda'], ['Brazos'], ['Abdominales']] %>
+      <%= f.select :category, [['selecciona', ''], ['Piernas'], ['Espalda'], ['Brazos'], ['Abdominales']], required: true %>
     </div>
 
     <div class="field ">
       <%= f.label :description %>
-      <%= f.text_field :description %>
+      <%= f.text_field :description, required: true %>
     </div>
 
     <%= f.fields_for :publication_attachments do |p| %>
         <div class="field">
           <%= p.label :image %><br>
-          <%= p.file_field :image, :multiple => true, name: "publication_attachments[image][]" %>
+          <%= p.file_field :image, :multiple => true, name: "publication_attachments[image][]", required: true %>
         </div>
     <% end %>
 

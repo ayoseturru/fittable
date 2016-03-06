@@ -42,11 +42,7 @@ class PublicationAttachmentsController < ApplicationController
   def update
     respond_to do |format|
       if @publication_attachment.update(publication_attachment_params)
-        format.html { redirect_to @publication_attachment, notice: 'Publication attachment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @publication_attachment }
-      else
-        format.html { render :edit }
-        format.json { render json: @publication_attachment.errors, status: :unprocessable_entity }
+        format.html { redirect_to @publication_attachment.publication, notice: 'Post attachment was successfully updated.' }
       end
     end
   end
@@ -56,19 +52,19 @@ class PublicationAttachmentsController < ApplicationController
   def destroy
     @publication_attachment.destroy
     respond_to do |format|
-      format.html { redirect_to publication_attachments_url, notice: 'Publication attachment was successfully destroyed.' }
+      format.html { redirect_to @publication_attachment.publication, notice: 'Publication attachment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_publication_attachment
-      @publication_attachment = PublicationAttachment.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_publication_attachment
+    @publication_attachment = PublicationAttachment.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def publication_attachment_params
-      params.require(:publication_attachment).permit(:publication_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def publication_attachment_params
+    params.require(:publication_attachment).permit(:image, :publication_id)
+  end
 end

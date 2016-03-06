@@ -1,0 +1,11 @@
+<h1>Editar ejercicio</h1>
+
+<%= render 'form' %>
+
+<% @publication.publication_attachments.each do |p| %>
+    <%= image_tag p.image_url %>
+    <%= link_to "Edit Attachment", edit_publication_attachment_path(p)%>
+<% end %>
+
+<%= link_to 'Show', @publication %> |
+<%= link_to 'Back', publications_path %>
