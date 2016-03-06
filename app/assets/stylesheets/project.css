@@ -13,12 +13,29 @@
     width: 100%;
 }
 
-.slide {
-    text-align: center;
-}
+/*.slide {*/
+    /*text-align: center;*/
+/*}*/
 
-.slide img {
-    margin: 0 auto;
+/*.slide img {*/
+    /*margin: 0 auto;*/
+    /*display: block;*/
+    /*width: 100%;*/
+/*}*/
+
+#owl-demo .item img{
     display: block;
     width: 100%;
+    height: auto;
+}
+
+#owl-demo #edit_image img{
+    display: block;
+    width: 35%;
+    height: auto;
+    margin: 0 auto;
+}
+
+#edit_image {
+    text-align: center;
 }

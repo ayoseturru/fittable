@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305193631) do
+ActiveRecord::Schema.define(version: 20160306212140) do
+
+  create_table "exercises", force: :cascade do |t|
+    t.string   "day"
+    t.integer  "publication_id"
+    t.integer  "user_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "series"
+    t.integer  "repeats"
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "day"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "user_id"
+    t.integer  "publication_id"
+  end
 
   create_table "publication_attachments", force: :cascade do |t|
     t.integer  "publication_id"
@@ -20,21 +38,27 @@ ActiveRecord::Schema.define(version: 20160305193631) do
     t.string   "image"
   end
 
+  create_table "publications", force: :cascade do |t|
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "description"
+    t.string   "category"
+    t.string   "title"
+    t.integer  "user_id"
+  end
+
+  create_table "tables", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "day"
+  end
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "email"
     t.string   "username"
     t.string   "hashed_password"
-  end
-
-  create_table "publications", force: :cascade do |t|
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "description"
-    t.string   "category"
-    t.string   "title"
-    t.integer  "user_id"
   end
 
 end

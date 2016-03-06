@@ -1,9 +1,15 @@
-<h1>Editing Publication Attachment</h1>
+<h1>Editar imagen</h1>
+<%= content_for :title, "FitTable" %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @publication_attachment %> |
-<%= link_to 'Back', publication_attachments_path %>
-<% if @publication_attachment.publication.owned_by?(current_user) %>
-    <%= link_to "delete", @publication_attachment, data: {confirm: '¿seguro?'}, method: :delete, remote: false, data: {ajax: false} %>
+<% content_for :buttons do %>
+    <%= link_to 'Atrás', @publication_attachment.publication, {"data-rel" => "back", :class => "ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"} %>
+<% end %>
+
+
+<% if false %>
+    <% if @publication_attachment.publication.owned_by?(current_user) %>
+        <%= link_to "delete", @publication_attachment, data: {confirm: '¿seguro?'}, method: :delete, remote: false, data: {ajax: false} %>
+    <% end %>
 <% end %>

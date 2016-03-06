@@ -17,3 +17,40 @@
 <ul id="publications" data-role="listview" data-autodividers="true" data-filter="true" data-input="#filter">
 
 </ul>
+
+<div data-role="popup" id="addPublicationMenu" data-theme="b">
+  <ul data-role="listview" data-inset="true" style="min-width:210px;">
+    <li data-role="list-divider">Opciones</li>
+    <li><a href="#" id="monday">Añadir a lunes</a></li>
+    <li><a href="#" id="tuesday">Añadir a martes</a></li>
+    <li><a href="#" id="wednesday">Añadir a miércoles</a></li>
+    <li><a href="#" id="thursday">Añadir a jueves</a></li>
+    <li><a href="#" id="friday">Añadir a viernes</a></li>
+    <li><a href="#" id="saturday">Añadir a sábado</a></li>
+    <li><a href="#" id="sunday">Añadir a domingo</a></li>
+  </ul>
+</div>
+<p><%= current_user.id %></p>
+
+<script type="text/javascript" charset="utf-8">
+  var publication = "";
+
+  function registAddEvent() {
+    $("a[href='#addPublicationMenu']").on("click", function () {
+      publication = $(this).attr("id").split("-")[1];
+    });
+  }
+
+  $(document).ready(function () {
+    $("#addPublicationMenu li a").on("click", function () {
+      $.ajax({
+        type: "POST",
+        data: {
+          publication_id: publication,
+          day: $(this).attr("id")
+        },
+        url: "/exercises"
+      });
+    });
+  });
+</script>

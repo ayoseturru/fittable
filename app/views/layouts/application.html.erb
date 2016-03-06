@@ -29,6 +29,8 @@
 
             <li> <%= link_to 'Favoritos', root_path, class: "ui-btn ui-btn-icon-top ui-icon-star", data: {ajax: "false"} %> </li>
 
+            <li> <%= link_to 'Ajustes', session_path, method: :delete, class: "ui-btn ui-btn-icon-top ui-icon-star", data: {ajax: "false"} %> </li>
+
           </ul>
         </div>
       </div>
@@ -45,8 +47,12 @@
 </html>
 
 <script>
+  function deleteBranchLineFromForms() {
+    $("form br").remove();
+  }
+
   $(document).ready(function () {
-        $("form br").remove();
+        deleteBranchLineFromForms();
       }
   );
 </script>

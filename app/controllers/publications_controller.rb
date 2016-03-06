@@ -16,6 +16,10 @@ class PublicationsController < ApplicationController
 
   end
 
+  def main
+    @exercises = current_user.exercises
+  end
+
   def index
     @publications = Publication.all
   end
@@ -43,7 +47,7 @@ class PublicationsController < ApplicationController
   def destroy
     @publication.destroy
     respond_to do |format|
-      format.html { redirect_to @publication, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to main_publications_url, notice: 'Post was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -53,9 +57,11 @@ class PublicationsController < ApplicationController
 
     respond_to do |format|
       if @publication.save
-        if params[:publication_attachments]['image']
-          params[:publication_attachments]['image'].each do |img|
-            @publication_attachment = @publication.publication_attachments.create!(:image => img)
+        for i in 0..2
+          if params[:publication_attachments]['image'][i]
+            @publication_attachment = @publication.publication_attachments.create!(:image => params[:publication_attachments]['image'][i])
+          else
+            @publication_attachment = @publication.publication_attachments.create!(:image => params[:publication_attachments]['image'][i])
           end
         end
         format.html { redirect_to @publication, notice: 'Se añadió el ejercicio correctamente' }

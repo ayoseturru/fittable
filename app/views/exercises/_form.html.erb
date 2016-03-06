@@ -1,0 +1,42 @@
+<%= content_for :title, "Modificar ejercicio" %>
+<h3 class="center_title"><%= @exercise.publication.title %></h3>
+<%= form_for(@exercise, data: {ajax: false}) do |f| %>
+    <% if @exercise.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@exercise.errors.count, "error") %> prohibited this exercise from being saved:</h2>
+
+          <ul>
+            <% @exercise.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :day, "Día de la semana" %><br>
+      <%= f.select :day, [['seleccione un día', ''], ['Lunes', 'monday'], ['Martes', 'tuesday'], ['Miércoles', 'wednesday'], ['Jueves' 'thursday'], ['Viernes', 'friday'], ['Sábado', 'saturday'], ['Domingo', 'sunday']] %>
+    </div>
+
+    <div class="field">
+      <%= f.label :series, "Series" %>
+      <%= f.number_field :series %>
+    </div>
+
+    <div class="field">
+      <%= f.label :repeats, "Repeticiones" %>
+      <%= f.number_field :repeats %>
+    </div>
+
+    <div class="field">
+      <%= f.label :publication_id %>
+      <%= f.hidden_field :publication_id %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Actualizar", data: {role: "button", icon: "edit", data: {ajax: false}} %>
+    </div>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+</script>

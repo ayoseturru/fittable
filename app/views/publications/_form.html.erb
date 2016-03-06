@@ -15,11 +15,13 @@
       <%= f.text_field :description, required: true %>
     </div>
 
-    <%= f.fields_for :publication_attachments do |p| %>
-        <div class="field">
-          <%= p.label :image %><br>
-          <%= p.file_field :image, :multiple => true, name: "publication_attachments[image][]", required: true %>
-        </div>
+    <% if params[:action] != "edit" %>
+        <%= f.fields_for :publication_attachments do |p| %>
+            <div class="field">
+              <%= p.label :image, "Seleccione un máximo de 3 imágenes, sólo se aceptarán las 3 primeras" %><br>
+              <%= p.file_field :image, :multiple => true, name: "publication_attachments[image][]", required: true %>
+            </div>
+        <% end %>
     <% end %>
 
     <div class="actions">

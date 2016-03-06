@@ -1,6 +1,6 @@
 class PublicationAttachmentsController < ApplicationController
   before_action :set_publication_attachment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate
+  before_action :authenticate, :check_propery
 
   # GET /publication_attachments
   # GET /publication_attachments.json
@@ -57,6 +57,11 @@ class PublicationAttachmentsController < ApplicationController
       format.html { redirect_to @publication, notice: 'Publication attachment was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def check_propery
+    (@publication_attachment.publication.user == current_user) || access_denied
   end
 
   private

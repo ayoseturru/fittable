@@ -1,0 +1,43 @@
+<%= content_for :title, @exercise.publication.title %>
+<h2>Descripción</h2>
+<h4 style="text-align: justify"><%= @exercise.publication.description %></h4>
+<h2>Información:</h2>
+<h4>
+  Este ejercicio se realizará los <%= @exercise.translate_day_to_spanish %>s. A razón de <%= @exercise.series || "0" %> series con
+  <%= @exercise.repeats || "0" %> repeticiones en cada una de ellas.
+</h4>
+
+<h2>Series y repeticiones</h2>
+<h5>Series: <%= @exercise.series || "Aún no las has especificado" %></h5>
+<h5>Repeticiones <%= @exercise.repeats || "Aún no las has especificado" %></h5>
+
+
+<div id="owl-demo" class="owl-carousel owl-theme">
+  <% @exercise.publication.publication_attachments.each do |p| %>
+      <div class="item" style="width: 100%">
+        <% if p.image_url() %>
+            <%= image_tag p.image_url() %>
+        <% else %>
+            <%= image_tag "default.jpg" %>
+        <% end %>
+        <br>
+      </div>
+  <% end %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+      navigation: true,
+      slideSpeed: 300,
+      paginationSpeed: 400,
+      singleItem: true
+    });
+    $("#delete_publication").on("click", function () {
+      window.location("/");
+    });
+  });
+</script>
+
+<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
+<%= link_to 'Back', exercises_path %>

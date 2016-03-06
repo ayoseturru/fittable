@@ -8,20 +8,25 @@
 </h1>
 
 <h4>Aclaración gráfica</h4>
-<div class="owl-carousel">
+<div id="owl-demo" class="owl-carousel owl-theme">
   <% @publication_attachments.each do |p| %>
-      <div class="slide" style="width: 100%">
-        <%= image_tag p.image_url() %>
+      <div class="item" style="width: 100%">
+        <% if p.image_url() %>
+            <%= image_tag p.image_url() %>
+        <% else %>
+            <%= image_tag "default.jpg" %>
+        <% end %>
         <br>
-        <%= link_to "Edit Attachment", edit_publication_attachment_path(p), class: "center_title" %>
       </div>
   <% end %>
 </div>
 
-<h4 style="text-align: justify"><%= @publication.description %></h4>
+<h3>Descripción</h3>
+<h5 style="text-align: justify"><%= @publication.description %></h5>
 
 <% if @publication.owned_by?(current_user) %>
     <%= link_to 'Editar', edit_publication_path(@publication), data: {ajax: false, icon: "edit", role: "button"} %>
+    <%= link_to "Eliminar", @publication, id: "delete_publication", data: {confirm: '¿seguro?'}, method: :delete, remote: false, data: {ajax: "false", icon: "delete", role: "button"} %>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">
@@ -31,6 +36,9 @@
       slideSpeed: 300,
       paginationSpeed: 400,
       singleItem: true
+    });
+    $("#delete_publication").on("click", function () {
+      window.location("/");
     });
   });
 </script>

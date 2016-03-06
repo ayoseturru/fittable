@@ -1,10 +1,15 @@
-<%= image_tag @publication_attachment.image %>
+<% if @publication_attachment.image_url != nil %>
+    <%= image_tag @publication_attachment.image, class: "center_image" %>
+<% else %>
+    <%= image_tag "default.jpg", class: "center_image"  %>
+<% end %>
+
 <%= form_for(@publication_attachment, data: {ajax: false}) do |f| %>
     <div class="field">
-      <%= f.label :image %><br>
+      <%= f.label :image, "Imagen: " %><br>
       <%= f.file_field :image %>
     </div>
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Actualizar", data: {ajax: false, icon: "edit", role: "button"} %>
     </div>
 <% end %>

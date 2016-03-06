@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :publications, :dependent => :delete_all
   attr_accessor :password
+  has_many :exercises
+
   before_save :encrypt_new_password
   validates :email, uniqueness: {case_sensitive: false, message: "Ya existe un usuario registrado con esa direccion de correo"}, length: {in: 6..40, message: "Correo inválido"}, format: {with: /\A(\S+)@(.+)\.(\S+)\z/, message: "Introduzca una direccion de correo válida"}
   validates :password, confirmation: {message: "Las contraseñas no coindicen"}, length: {within: 8..20, message: "La contraseña debe tener una longitud mínima de 8 caracteres"}, presence: {if: :password_required?, message: "La contraseña no puede estar en blanco"}

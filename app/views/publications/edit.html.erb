@@ -1,11 +1,32 @@
 <h1>Editar ejercicio</h1>
 
-<%= render 'form' %>
-
-<% @publication.publication_attachments.each do |p| %>
-    <%= image_tag p.image_url %>
-    <%= link_to "Edit Attachment", edit_publication_attachment_path(p)%>
+<% content_for :buttons do %>
+    <%= link_to 'Atrás', @publication, {"data-rel" => "back", :class => "ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"} %>
 <% end %>
 
-<%= link_to 'Show', @publication %> |
-<%= link_to 'Back', publications_path %>
+<%= render 'form' %>
+
+<div id="owl-demo" class="owl-carousel owl-theme">
+  <% @publication.publication_attachments.each do |p| %>
+      <div id="edit_image" class="item" style="width: 100%">
+        <% if p.image_url() %>
+            <%= image_tag p.image_url() %>
+        <% else %>
+            <%= image_tag "default.jpg" %>
+        <% end %>
+        <br>
+        <%= link_to "Editar imagen", edit_publication_attachment_path(p), class: "center_title", data: {role: "button", icon:"camera"} %>
+      </div>
+  <% end %>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    $(".owl-carousel").owlCarousel({
+      navigation: true,
+      slideSpeed: 300,
+      paginationSpeed: 400,
+      singleItem: true
+    });
+  });
+</script>
