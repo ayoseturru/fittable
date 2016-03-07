@@ -1,0 +1,15 @@
+<form class="ui-filterable">
+  <input id="filter" data-type="search"/>
+</form>
+<ul id="publications" data-role="listview" data-autodividers="true" data-filter="true" data-input="#filter">
+  <%= render current_user.publications %>
+</ul>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    $("#footer li a").removeClass("ui-btn-active");
+    $("#footer #user_publications").addClass("ui-btn-active");
+  });
+</script>
+
+<%= content_for :title, "Mis publicaciones" %>

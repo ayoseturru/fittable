@@ -2,6 +2,9 @@ class Exercise < ActiveRecord::Base
   belongs_to :user
   belongs_to :publication
 
+  scope :day, -> (day) { where(:day => day) }
+
+
   def translate_day_to_spanish
     case self.day
       when 'monday'

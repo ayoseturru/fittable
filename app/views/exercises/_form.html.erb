@@ -15,7 +15,7 @@
 
     <div class="field">
       <%= f.label :day, "Día de la semana" %><br>
-      <%= f.select :day, [['seleccione un día', ''], ['Lunes', 'monday'], ['Martes', 'tuesday'], ['Miércoles', 'wednesday'], ['Jueves' 'thursday'], ['Viernes', 'friday'], ['Sábado', 'saturday'], ['Domingo', 'sunday']] %>
+      <%= f.select :day, [['Lunes', 'monday'], ['Martes', 'tuesday'], ['Miércoles', 'wednesday'], ['Jueves' 'thursday'], ['Viernes', 'friday'], ['Sábado', 'saturday'], ['Domingo', 'sunday']] %>
     </div>
 
     <div class="field">
@@ -26,11 +26,6 @@
     <div class="field">
       <%= f.label :repeats, "Repeticiones" %>
       <%= f.number_field :repeats %>
-    </div>
-
-    <div class="field">
-      <%= f.label :publication_id %>
-      <%= f.hidden_field :publication_id %>
     </div>
 
     <div class="actions">

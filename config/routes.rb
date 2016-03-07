@@ -16,6 +16,7 @@ Rails.application.routes.draw do
       get 'main'
       get 'search'
       get 'search_by_category'
+      get 'user_publications'
     end
   end
 

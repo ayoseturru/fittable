@@ -1,0 +1,12 @@
+<li class="ui-li-has-thumb">
+  <%= link_to exercise do %>
+      <%= exercise.publication.title.to_s + " con " + (exercise.series ? exercise.series : 0).to_s + " series de " + (exercise.repeats ? exercise.repeats : 0).to_s + " repeticiones" %>
+      <% if exercise.publication.publication_attachments.first %>
+          <% if exercise.publication.publication_attachments.first.image_url() %>
+              <%= image_tag exercise.publication.publication_attachments.first.image %>
+          <% else %>
+              <%= image_tag "default.jpg" %>
+          <% end %>
+      <% end %>
+  <% end %>
+</li>

@@ -1,0 +1,44 @@
+<%= content_for :title, "Cuenta" %>
+
+<%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2> <%= pluralize(@user.errors.count, "error") %>
+            prohibited this user from being saved: </h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :email, "Email" %></br>
+      <%= f.text_field :email %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password, "Contraseña" %></br>
+      <%= f.password_field :password %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation, "Repita la contraseña" %></br>
+      <%= f.password_field :password_confirmation %>
+    </div>
+
+
+    <div class="actions">
+      <%= f.submit "Actualizar perfil", class:'button', data: {role: "button", icon: "edit"} %>
+    </div>
+
+<% end %>
+<%= link_to 'Cerrar sesión', session_path, method: :delete, class: "ui-button button ui-icon-exit", data: {role: "button", icon: "user"} %>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    $("#footer li a").removeClass("ui-btn-active");
+    $("#footer #account").addClass("ui-btn-active");
+  });
+</script>

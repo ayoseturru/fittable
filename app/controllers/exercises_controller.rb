@@ -4,7 +4,13 @@ class ExercisesController < ApplicationController
   # GET /exercises
   # GET /exercises.json
   def index
-    @exercises = current_user.exercises
+    @exercises_monday = current_user.exercises.day("monday") || []
+    @exercises_tuesday = current_user.exercises.day("tuesday")
+    @exercises_wednesday = current_user.exercises.day("wednesday")
+    @exercises_thursday = current_user.exercises.day("thursday")
+    @exercises_friday = current_user.exercises.day("friday")
+    @exercises_saturday = current_user.exercises.day("saturday")
+    @exercises_sunday = current_user.exercises.day("sunday")
   end
 
   # GET /exercises/1
@@ -24,7 +30,7 @@ class ExercisesController < ApplicationController
   # POST /exercises
   # POST /exercises.json
   def create
-    @exercise = current_user.exercises.new(day: params[:day], user_id: current_user.id, publication_id: params[:publication_id])
+    @exercise = current_user.exercises.new(exercise_params)
     respond_to do |format|
       if @exercise.save
         format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }
@@ -40,7 +46,7 @@ class ExercisesController < ApplicationController
   # PATCH/PUT /exercises/1.json
   def update
     respond_to do |format|
-      if @exercise.update(day: params[:day], user_id: current_user.id, publication: @exercise.publication)
+      if @exercise.update(exercise_params)
         format.html { redirect_to @exercise, notice: 'Exercise was successfully updated.' }
         format.json { render :show, status: :ok, location: @exercise }
       else
@@ -68,6 +74,6 @@ class ExercisesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def exercise_params
-    params.require(:exercise).permit(:day, :publication_id, :user_id)
+    params.require(:exercise).permit(:day, :publication_id, :series, :repeats)
   end
 end

@@ -1,6 +1,6 @@
 class Publication < ActiveRecord::Base
   belongs_to :user
-  has_many :publication_attachments
+  has_many :publication_attachments, :dependent => :delete_all
 
   accepts_nested_attributes_for :publication_attachments
   scope :category, -> (category = "General") { where(:category => category) }

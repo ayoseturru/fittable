@@ -23,13 +23,13 @@
       <div id="footer" data-role="footer" data-position="fixed">
         <div data-role="navbar">
           <ul>
-            <li> <%= link_to 'Buscar', search_publications_path, class: "ui-btn ui-btn-icon-top ui-icon-search", data: {ajax: "false"} %> </li>
+            <li> <%= link_to 'Buscar', search_publications_path, id: "search", class: "ui-btn ui-btn-icon-top ui-icon-search", data: {ajax: "false"} %> </li>
 
             <li> <%= link_to 'Home', root_path, class: "ui-btn ui-btn-icon-top ui-icon-home ui-btn-active", data: {ajax: "false"} %> </li>
 
-            <li> <%= link_to 'Favoritos', root_path, class: "ui-btn ui-btn-icon-top ui-icon-star", data: {ajax: "false"} %> </li>
+            <li> <%= link_to 'Mis publicaciones', user_publications_publications_path, id: "user_publications", class: "ui-btn ui-btn-icon-top ui-icon-heart", data: {ajax: "false"} %> </li>
 
-            <li> <%= link_to 'Ajustes', session_path, method: :delete, class: "ui-btn ui-btn-icon-top ui-icon-star", data: {ajax: "false"} %> </li>
+            <li> <%= link_to 'Cuenta', user_path(id: current_user.id), id: "account", class: "ui-btn ui-btn-icon-top ui-icon-star", data: {ajax: "false"} %> </li>
 
           </ul>
         </div>
@@ -42,6 +42,19 @@
         });
       </script>
   <% end %>
+
+  <div data-role="popup" id="addPublicationMenu" data-theme="b">
+    <ul data-role="listview" data-inset="true" style="min-width:210px;">
+      <li data-role="list-divider">Opciones</li>
+      <li><a href="#" data-rel="back" id="monday">Añadir a lunes</a></li>
+      <li><a href="#" id="tuesday" data-rel="back">Añadir a martes</a></li>
+      <li><a href="#" id="wednesday" data-rel="back">Añadir a miércoles</a></li>
+      <li><a href="#" id="thursday" data-rel="back">Añadir a jueves</a></li>
+      <li><a href="#" id="friday" data-rel="back">Añadir a viernes</a></li>
+      <li><a href="#" id="saturday" data-rel="back">Añadir a sábado</a></li>
+      <li><a href="#" id="sunday" data-rel="back">Añadir a domingo</a></li>
+    </ul>
+  </div>
 </div>
 </body>
 </html>
@@ -51,8 +64,28 @@
     $("form br").remove();
   }
 
+  var publication = "";
+
+  function registAddEvent() {
+    $("a[href='#addPublicationMenu']").on("click", function () {
+      publication = $(this).attr("id").split("-")[1];
+    });
+  }
+
   $(document).ready(function () {
-        deleteBranchLineFromForms();
-      }
-  );
+    registAddEvent();
+    $("#addPublicationMenu li a").on("click", function () {
+      $.ajax({
+        type: "POST",
+        data: {
+          exercise: {
+            publication_id: publication,
+            day: $(this).attr("id")
+          }
+        },
+        url: "/exercises"
+      });
+    });
+    deleteBranchLineFromForms();
+  });
 </script>

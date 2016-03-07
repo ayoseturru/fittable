@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
+  before_action :authenticate, only: [:show, :destroy, :edit]
 
   def new
     @user = User.new
+  end
+
+  def show
+    @user = current_user
   end
 
   def create
@@ -10,6 +15,14 @@ class UsersController < ApplicationController
       redirect_to root_url, notice: '¡Inicia sesion para empezar a usar FitTable!'
     else
       render action: :new
+    end
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to exercises_url, notice: 'User successfully updated'
+    else
+      render action: :edit
     end
   end
 

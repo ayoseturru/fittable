@@ -1,9 +1,13 @@
 <%= content_for :title, @exercise.publication.title %>
+<% content_for :buttons do %>
+    <%= link_to 'Atrás', root_url, {:class => "ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"} %>
+<% end %>
 <h2>Descripción</h2>
 <h4 style="text-align: justify"><%= @exercise.publication.description %></h4>
 <h2>Información:</h2>
 <h4>
-  Este ejercicio se realizará los <%= @exercise.translate_day_to_spanish %>s. A razón de <%= @exercise.series || "0" %> series con
+  Este ejercicio se realizará los <%= @exercise.translate_day_to_spanish %>s. A razón de <%= @exercise.series || "0" %>
+  series con
   <%= @exercise.repeats || "0" %> repeticiones en cada una de ellas.
 </h4>
 
@@ -39,5 +43,4 @@
   });
 </script>
 
-<%= link_to 'Edit', edit_exercise_path(@exercise) %> |
-<%= link_to 'Back', exercises_path %>
+<%= link_to 'Editar', edit_exercise_path(@exercise), class: "button ui-button", data: {role: "button", icon: "edit"} %>

@@ -16,8 +16,11 @@ class PublicationsController < ApplicationController
 
   end
 
+  def user_publication
+  end
+
   def main
-    @exercises = current_user.exercises
+    redirect_to exercises_url
   end
 
   def index
