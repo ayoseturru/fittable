@@ -3,7 +3,7 @@
       <%= exercise.publication.title.to_s + " con " + (exercise.series ? exercise.series : 0).to_s + " series de " + (exercise.repeats ? exercise.repeats : 0).to_s + " repeticiones" %>
       <% if exercise.publication.publication_attachments.first %>
           <% if exercise.publication.publication_attachments.first.image_url() %>
-              <%= image_tag exercise.publication.publication_attachments.first.image %>
+              <%= image_tag exercise.publication.publication_attachments.first.image.thumb %>
           <% else %>
               <%= image_tag "default.jpg" %>
           <% end %>

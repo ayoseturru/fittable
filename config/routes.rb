@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :likes
   resources :exercises
   resources :plans
   resources :publication_attachments
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
       get 'search'
       get 'search_by_category'
       get 'user_publications'
+      post 'like'
+      post 'dislike'
     end
   end
 

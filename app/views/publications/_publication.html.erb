@@ -4,6 +4,7 @@
           <%= image_tag publication.publication_attachments.first.image %>
       <% end %>
       <h3> <%= publication.title.capitalize %> por @<%= publication.user.username %></h3>
+      <h3> <%= publication.like %> likes y compartido <%= publication.times %> veces</h3>
       <% if publication.owned_by?(current_user) %>
           <h6>Click para editar u eliminar</h6>
       <% end %>

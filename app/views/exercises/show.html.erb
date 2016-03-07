@@ -6,7 +6,7 @@
 <h4 style="text-align: justify"><%= @exercise.publication.description %></h4>
 <h2>Información:</h2>
 <h4>
-  Este ejercicio se realizará los <%= @exercise.translate_day_to_spanish %>s. A razón de <%= @exercise.series || "0" %>
+  Este ejercicio se realizará cada <%= @exercise.translate_day_to_spanish %>. A razón de <%= @exercise.series || "0" %>
   series con
   <%= @exercise.repeats || "0" %> repeticiones en cada una de ellas.
 </h4>
@@ -20,7 +20,7 @@
   <% @exercise.publication.publication_attachments.each do |p| %>
       <div class="item" style="width: 100%">
         <% if p.image_url() %>
-            <%= image_tag p.image_url() %>
+            <%= image_tag p.image_url(), class: "normal_image" %>
         <% else %>
             <%= image_tag "default.jpg" %>
         <% end %>
@@ -44,3 +44,4 @@
 </script>
 
 <%= link_to 'Editar', edit_exercise_path(@exercise), class: "button ui-button", data: {role: "button", icon: "edit"} %>
+<%= link_to 'Eliminar', @exercise, method: :delete, confirm: "¿Estás seguro de que deseas borrar este ejercicio de la tabla?", class: "button ui-button", data: {role: "button", icon: "delete"} %>

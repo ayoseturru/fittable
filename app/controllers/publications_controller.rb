@@ -1,5 +1,5 @@
 class PublicationsController < ApplicationController
-  before_action :set_publication, only: [:show, :edit, :update, :destroy]
+  before_action :set_publication, only: [:show, :edit, :update, :destroy, :like, :dislike]
   before_action :authenticate
 
 
@@ -21,6 +21,22 @@ class PublicationsController < ApplicationController
 
   def main
     redirect_to exercises_url
+  end
+
+  def like
+    Like.create(user_id: current_user.id, publication_id: @publication.id)
+    @publication.update(like: @publication.like + 1)
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  def dislike
+    Like.user_like(current_user.id, @publication.id).first.delete
+    @publication.update(like: @publication.like - 1)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def index

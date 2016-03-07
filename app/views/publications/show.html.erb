@@ -27,6 +27,16 @@
 <% if @publication.owned_by?(current_user) %>
     <%= link_to 'Editar', edit_publication_path(@publication), data: {ajax: false, icon: "edit", role: "button"} %>
     <%= link_to "Eliminar", @publication, id: "delete_publication", data: {confirm: '¿seguro?'}, method: :delete, remote: false, data: {ajax: "false", icon: "delete", role: "button"} %>
+<% else %>
+    <div id="like_dislike">
+      <% if Like.user_like(current_user.id, @publication.id).count > 0 %>
+          <%= link_to 'Dislike', dislike_publications_path(id: @publication.id), id: "dislike", remote: true, method: :post, data: {ajax: true, icon: "star", role: "button"} %>
+          <%= link_to 'Like', like_publications_path(id: @publication.id), id: "like", style: "display: none", remote: true, method: :post, data: {ajax: true, icon: "star", role: "button"} %>
+      <% else %>
+          <%= link_to 'Dislike', dislike_publications_path(id: @publication.id), style: "display: none", id: "dislike", remote: true, method: :post, data: {ajax: true, icon: "star", role: "button"} %>
+          <%= link_to 'Like', like_publications_path(id: @publication.id), id: "like", remote: true, method: :post, data: {ajax: true, icon: "star", role: "button"} %>
+      <% end %>
+    </div>
 <% end %>
 
 <script type="text/javascript" charset="utf-8">

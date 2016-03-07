@@ -2,7 +2,7 @@
 <%= form_tag search_by_category_publications_path, remote: true, method: :get do %>
     <div class="ui-grid-a">
       <div class="field ui-block-a" style="width: 70%">
-        <%= select_tag :category, options_for_select([['Categoría', ''], ['Piernas'], ['Espalda'], ['Brazos'], ['Abdominales'], ['General']]) %>
+        <%= select_tag :category, options_for_select([['Categoría', ''], ['Piernas'], ['Pecho'], ['Espalda'], ['Brazos'], ['Abdominales'], ['General']]) %>
       </div>
       <div class=" ui-block-b" style="width: 30%">
         <%= submit_tag 'Buscar', data: {icon: "search"} %>

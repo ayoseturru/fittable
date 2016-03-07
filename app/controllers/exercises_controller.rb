@@ -31,6 +31,7 @@ class ExercisesController < ApplicationController
   # POST /exercises.json
   def create
     @exercise = current_user.exercises.new(exercise_params)
+    Publication.find(@exercise.publication_id).add_time
     respond_to do |format|
       if @exercise.save
         format.html { redirect_to @exercise, notice: 'Exercise was successfully created.' }

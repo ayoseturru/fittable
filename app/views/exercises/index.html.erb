@@ -39,3 +39,13 @@
       <%= render "list_item_publication", exercise: exercise %>
   <% end %>
 </ul>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    $("li").each(function () {
+      if ($(this).html() == "") {
+        $(this).remove();
+      }
+    });
+  });
+</script>
