@@ -46,16 +46,24 @@ $(document).on('pageinit', function () {
 
     function addExercises(data) {
         console.log("callback de ajax refresh");
+        $('.exercise_li').remove();
         for (var exercise in data) {
-            var auxdata = localStorage[data[exercise].id];
+            var auxdata = localStorage[data[exercise].id + "_first"];
             var description = "<h3>" + data[exercise].publication.title + " por " + data[exercise].publication.username + "<h3>";
             var custom_Exercise = data[exercise].series + " series de " + data[exercise].repeats + " cada una";
-            $('#' + data[exercise].day).after("	<li id=" + exercise + " ><a href='/exercises/show_exercise.html' > <img src='" + auxdata + "' alt='" + data[exercise].publication.title + "' /> <h3>" + description + "</h3>" + custom_Exercise +  "</a></li> ");
+            $('#' + data[exercise].day + "_divider").after("<li class='exercise_li' id='exercise_" + data[exercise].id + "'>" + "<a data-ajax='false' href='/exercises/show_exercise.html?id=" + data[exercise].id + "'>" + "<img src='" + auxdata + "' />" + "<h3>" + description + "</h3>" + custom_Exercise + "</a></li>");
         }
         $('#exercises').listview().listview('refresh');
     }
 
+    if (localStorage.exercises) updateExercises(JSON.parse(localStorage.exercises));
+
+    $(window).on("online", updateDataFromServer);
+
     if (window.navigator.onLine) updateDataFromServer();
+
+
+    //if (window.location.href.indexOf("show_exercise") > -1) alert("yes");
 });
 
 

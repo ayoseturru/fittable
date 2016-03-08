@@ -21,6 +21,7 @@ CACHE:
 /publications/search
 /publications/user_publications
 /users/user_profile
+/exercises/show_exercise.html
 
 NETWORK:
 *

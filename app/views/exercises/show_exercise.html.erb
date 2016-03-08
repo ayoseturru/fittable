@@ -1,0 +1,58 @@
+<% content_for :buttons do %>
+    <%= link_to 'Atrás', root_url, {:class => "ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"} %>
+<% end %>
+<h2>Descripción</h2>
+<h4 style="text-align: justify" id="publication_description"></h4>
+<h2>Información:</h2>
+<h4 id="general_description">
+</h4>
+
+<h2>Series y repeticiones</h2>
+<div id="series"><h4></h4></div>
+<div id="repeats"><h4></h4></div>
+
+<div id="owl-demo" class="owl-carousel owl-theme">
+  <div class="item first_image" style="width: 100%"></div>
+  <div class="item second_image" style="width: 100%"></div>
+  <div class="item third_image" style="width: 100%"></div>
+</div>
+
+<a id="edit_link" class="button ui-button ui-link ui-btn ui-icon-edit ui-btn-icon-left ui-shadow ui-corner-all" data-role="button" data-icon="edit" href="" role="button">Editar</a>
+<a id="delete_link" confirm="¿Estás seguro de que deseas borrar este ejercicio de la tabla?" class="button ui-button ui-link ui-btn ui-icon-delete ui-btn-icon-left ui-shadow ui-corner-all" data-role="button" data-icon="delete" rel="nofollow" data-method="delete" href="" role="button">Eliminar</a>
+
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+
+    $("#delete_publication").on("click", function () {
+      window.location("/");
+    });
+
+    var exercise = parseInt(window.location.href.split("=")[1]);
+    var exercises = JSON.parse(localStorage.getItem("exercises"));
+    for (var i = 0; i < exercises.length; i++) {
+      console.log(exercises[i].id == exercise);
+      if (exercises[i].id == exercise) {
+        exercise = exercises[i];
+      }
+    }
+    $("h1[class='ui-title']").html(exercise.publication.title);
+    var description = "<h4>" + "Este ejercicio se realizará cada " + exercise.day + " con " + exercise.series + " series" + " de " + exercise.repeats + " repeticiones." + "</h4>"
+    $("#publication_description").html(exercise.publication.description);
+    $("#general_description").html(description);
+    $("#series h4").html("Series: " + exercise.series);
+    $("#repeats h4").html("Repeticiones: " + exercise.repeats);
+    $(".first_image").html("<img src='" + localStorage.getItem(exercise.id + "_first") + "' />");
+    $(".second_image").html("<img src='" + localStorage.getItem(exercise.id + "_second") + "' />");
+    $(".third_image").html("<img src='" + localStorage.getItem(exercise.id + "_third") + "' />");
+
+    $(".owl-carousel").owlCarousel({
+      navigation: true,
+      slideSpeed: 300,
+      paginationSpeed: 400,
+      singleItem: true
+    });
+
+    $("#edit_link").attr("href", "/exercises/" + exercise.id + "/edit");
+    $("#delete_link").attr("href", "/exercises/" + exercise.id);
+  });
+</script>

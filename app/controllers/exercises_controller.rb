@@ -28,6 +28,10 @@ class ExercisesController < ApplicationController
   def edit
   end
 
+  def show_exercise
+
+  end
+
   # POST /exercises
   # POST /exercises.json
   def create

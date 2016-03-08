@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   resources :likes
-  resources :exercises
+  resources :exercises do
+    collection do
+      get 'show_exercise'
+    end
+  end
   resources :plans
   resources :publication_attachments
   # The priority is based upon order of creation: first created -> highest priority.
