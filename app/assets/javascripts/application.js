@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require jquery.mobile
 //= require owl.carousel
+//= require handlebars-v4.0.5
 //= require_tree .
 
 var appCache = window.applicationCache;

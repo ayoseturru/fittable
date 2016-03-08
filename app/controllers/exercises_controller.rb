@@ -4,7 +4,8 @@ class ExercisesController < ApplicationController
   # GET /exercises
   # GET /exercises.json
   def index
-    @exercises_monday = current_user.exercises.day("monday") || []
+    @exercises = current_user.exercises
+    @exercises_monday = current_user.exercises.day("monday")
     @exercises_tuesday = current_user.exercises.day("tuesday")
     @exercises_wednesday = current_user.exercises.day("wednesday")
     @exercises_thursday = current_user.exercises.day("thursday")

@@ -2,42 +2,15 @@
 <%= content_for :buttons do %>
     <%= link_to 'Nuevo', new_publication_path, class: "ui-btn-right ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-plus ui-nodisc-icon ui-alt-icon ui-btn-icon-notext" %>
 <% end %>
-<ul data-role="listview" data-inset="true">
-  <li data-role="list-divider">Lunes</li>
-  <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_monday.length == 0 %></li>
-  <% @exercises_monday.each do |exercise| %>
-      <%= render "list_item_publication", exercise: exercise %>
-  <% end %>
-  <li data-role="list-divider">Martes</li>
-  <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_tuesday.length == 0 %></li>
-  <% @exercises_tuesday.each do |exercise| %>
-      <%= render "list_item_publication", exercise: exercise %>
-  <% end %>
-  <li data-role="list-divider">Miércoles</li>
-  <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_wednesday.length == 0 %></li>
-  <% @exercises_wednesday.each do |exercise| %>
-      <%= render "list_item_publication", exercise: exercise %>
-  <% end %>
-  <li data-role="list-divider">Jueves</li>
-  <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_thursday.length == 0 %></li>
-  <% @exercises_thursday.each do |exercise| %>
-      <%= render "list_item_publication", exercise: exercise %>
-  <% end %>
-  <li data-role="list-divider">Viernes</li>
-  <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_friday.length == 0 %></li>
-  <% @exercises_friday.each do |exercise| %>
-      <%= render "list_item_publication", exercise: exercise %>
-  <% end %>
-  <li data-role="list-divider">Sábado</li>
-  <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_saturday.length == 0 %></li>
-  <% @exercises_saturday.each do |exercise| %>
-      <%= render "list_item_publication", exercise: exercise %>
-  <% end %>
-  <li data-role="list-divider">Domingo</li>
-  <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_sunday.length == 0 %></li>
-  <% @exercises_sunday.each do |exercise| %>
-      <%= render "list_item_publication", exercise: exercise %>
-  <% end %>
+
+<ul id="exercises" data-role="listview" data-inset="true">
+  <li id="monday" data-role="list-divider">Lunes</li>
+  <li id="tuesday" data-role="list-divider">Martes</li>
+  <li id="wednesday" data-role="list-divider">Miércoles</li>
+  <li id="thursday" data-role="list-divider">Jueves</li>
+  <li id="friday" data-role="list-divider">Viernes</li>
+  <li id="saturday" data-role="list-divider">Sábado</li>
+  <li id="sunday" data-role="list-divider">Domingo</li>
 </ul>
 
 <script type="text/javascript" charset="utf-8">
@@ -49,3 +22,41 @@
     });
   });
 </script>
+
+<% if false %>
+    <li data-role="list-divider">Lunes</li>
+    <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_monday.length == 0 %></li>
+    <% @exercises_monday.each do |exercise| %>
+        <%= render "list_item_publication", exercise: exercise %>
+    <% end %>
+    <li data-role="list-divider">Martes</li>
+    <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_tuesday.length == 0 %></li>
+    <% @exercises_tuesday.each do |exercise| %>
+        <%= render "list_item_publication", exercise: exercise %>
+    <% end %>
+    <li data-role="list-divider">Miércoles</li>
+    <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_wednesday.length == 0 %></li>
+    <% @exercises_wednesday.each do |exercise| %>
+        <%= render "list_item_publication", exercise: exercise %>
+    <% end %>
+    <li data-role="list-divider">Jueves</li>
+    <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_thursday.length == 0 %></li>
+    <% @exercises_thursday.each do |exercise| %>
+        <%= render "list_item_publication", exercise: exercise %>
+    <% end %>
+    <li data-role="list-divider">Viernes</li>
+    <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_friday.length == 0 %></li>
+    <% @exercises_friday.each do |exercise| %>
+        <%= render "list_item_publication", exercise: exercise %>
+    <% end %>
+    <li data-role="list-divider">Sábado</li>
+    <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_saturday.length == 0 %></li>
+    <% @exercises_saturday.each do |exercise| %>
+        <%= render "list_item_publication", exercise: exercise %>
+    <% end %>
+    <li data-role="list-divider">Domingo</li>
+    <li><%= "Aún no se ha añadido ningúnn ejercicio" if @exercises_sunday.length == 0 %></li>
+    <% @exercises_sunday.each do |exercise| %>
+        <%= render "list_item_publication", exercise: exercise %>
+    <% end %>
+<% end %>
