@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="/offline.appcache">
 <head>
   <title>FitTable</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -25,11 +25,11 @@
           <ul>
             <li> <%= link_to 'Buscar', search_publications_path, id: "search", class: "ui-btn ui-btn-icon-top ui-icon-search", data: {ajax: "false"} %> </li>
 
-            <li> <%= link_to 'Home', root_path, class: "ui-btn ui-btn-icon-top ui-icon-home ui-btn-active", data: {ajax: "false"} %> </li>
+            <li> <%= link_to 'Home', exercises_url, class: "ui-btn ui-btn-icon-top ui-icon-home ui-btn-active", data: {ajax: "false"} %> </li>
 
             <li> <%= link_to 'Mis publicaciones', user_publications_publications_path, id: "user_publications", class: "ui-btn ui-btn-icon-top ui-icon-heart", data: {ajax: "false"} %> </li>
 
-            <li> <%= link_to 'Cuenta', user_path(id: current_user.id), id: "account", class: "ui-btn ui-btn-icon-top ui-icon-star", data: {ajax: "false"} %> </li>
+            <li> <%= link_to 'Cuenta', user_profile_users_path, id: "account", class: "ui-btn ui-btn-icon-top ui-icon-star", data: {ajax: "false"} %> </li>
 
           </ul>
         </div>

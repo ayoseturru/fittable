@@ -1,0 +1,28 @@
+CACHE MANIFEST
+# v 12ddf
+CACHE:
+/assets/application.css?body=1
+/assets/jquery.mobile.css?body=1
+/assets/jquery.mobile.icons.min.css?body=1
+/assets/project.css?body=1
+/assets/owl.carousel.css?body=1
+/assets/owl.theme.css?body=1
+/assets/exercises.css?body=1
+/assets/scaffolds.css?body=1
+/assets/fitness.css?body=1
+
+/assets/application.js?body=1
+/assets/jquery.js?body=1
+/assets/jquery_ujs.js?body=1
+/assets/jquery.mobile.js?body=1
+/assets/owl.carousel.js?body=1
+
+/exercises.html
+/publications/search
+/publications/user_publications
+/users/user_profile
+
+NETWORK:
+*
+FALLBACK:
+/404.html

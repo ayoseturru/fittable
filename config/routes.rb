@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root "welcome#index"
 
-  resources :users
+  resources :users do
+    collection do
+      get 'user_profile'
+    end
+  end
 
   resources :publications do
     collection do

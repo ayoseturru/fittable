@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate, only: [:show, :destroy, :edit]
+  before_action :authenticate, only: [:show, :destroy, :edit, :user]
 
   def new
     @user = User.new
@@ -7,6 +7,11 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+  end
+
+  def user_profile
+    @user = current_user
+    render action: :show
   end
 
   def create
