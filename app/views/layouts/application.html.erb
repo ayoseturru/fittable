@@ -84,6 +84,8 @@
           }
         },
         url: "/exercises"
+      }).error(function () {
+        alert("Ahora mismo no posees conexión a internet y no podemos recuperar los datos");
       });
     });
     deleteBranchLineFromForms();

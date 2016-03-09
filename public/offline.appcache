@@ -1,5 +1,5 @@
 CACHE MANIFEST
-# v 12ddffff
+# v 12ddffffddfd33gfdfff
 CACHE:
 /assets/application.css?body=1
 /assets/jquery.mobile.css?body=1
@@ -21,7 +21,7 @@ CACHE:
 /publications/search
 /publications/user_publications
 /users/user_profile
-/exercises/show_exercise.html?id=
+/exercises/show_exercise.html
 /exercises
 
 NETWORK:

@@ -30,7 +30,6 @@ $(document).on('pageinit', function () {
     var updateDataFromServer = function () {
         if (updating) return;
         updating = true;
-        localStorage.clear();
         $.mobile.loading('show');
         $.getJSON("/exercises.json").done(function (json) {
             console.log("url search: " + window.location.search.substring(1));
@@ -52,14 +51,19 @@ $(document).on('pageinit', function () {
             var auxdata = localStorage[data[exercise].id + "_first"];
             var description = "<h3>" + data[exercise].publication.title + " por " + data[exercise].publication.username + "<h3>";
             var custom_Exercise = data[exercise].series + " series de " + data[exercise].repeats + " cada una";
-            $('#' + data[exercise].day + "_divider").after("<li class='exercise_li' id='exercise_" + data[exercise].id + "'>" + "<a data-ajax='false' href='/exercises/show_exercise.html?id=" + data[exercise].id + "'>" + "<img src='" + (auxdata || localStorage.getItem("default_image")) + "' />" + "<h3>" + description + "</h3>" + custom_Exercise + "</a></li>");
+            $('#' + data[exercise].day + "_divider").after("<li class='exercise_li' id='exercise_" + data[exercise].id + "'>" + "<a data-ajax='false' href='/exercises/show_exercise.html" + "'>" + "<img src='" + (auxdata || localStorage.getItem("default_image")) + "' />" + "<h3>" + description + "</h3>" + custom_Exercise + "</a></li>");
         }
         $('#exercises').listview().listview('refresh');
+
+        $(".exercise_li").on("click", function () {
+            localStorage.setItem("active_exercise", $(this).attr("id").split("_")[1]);
+        });
     }
 
     if (localStorage.exercises) updateExercises(JSON.parse(localStorage.exercises));
 
     $(window).on("online", updateDataFromServer);
+
 
     if (window.navigator.onLine) updateDataFromServer();
 

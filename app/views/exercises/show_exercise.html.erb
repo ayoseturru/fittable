@@ -1,5 +1,5 @@
 <% content_for :buttons do %>
-    <%= link_to 'Atrás', root_url, {:class => "ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"} %>
+    <%= link_to 'Atrás', "/exercises", {:class => "ui-btn-left ui-btn ui-btn-inline ui-mini ui-corner-all ui-btn-icon-left ui-icon-back"} %>
 <% end %>
 <h2>Descripción</h2>
 <h4 style="text-align: justify" id="publication_description"></h4>
@@ -27,7 +27,7 @@
       window.location("/");
     });
 
-    var exercise = parseInt(window.location.href.split("=")[1]);
+    var exercise = localStorage.getItem("active_exercise");
     var exercises = JSON.parse(localStorage.getItem("exercises"));
     for (var i = 0; i < exercises.length; i++) {
       console.log(exercises[i].id == exercise);
