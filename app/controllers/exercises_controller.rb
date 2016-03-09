@@ -1,17 +1,11 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate
 
   # GET /exercises
   # GET /exercises.json
   def index
     @exercises = current_user.exercises
-    @exercises_monday = current_user.exercises.day("monday")
-    @exercises_tuesday = current_user.exercises.day("tuesday")
-    @exercises_wednesday = current_user.exercises.day("wednesday")
-    @exercises_thursday = current_user.exercises.day("thursday")
-    @exercises_friday = current_user.exercises.day("friday")
-    @exercises_saturday = current_user.exercises.day("saturday")
-    @exercises_sunday = current_user.exercises.day("sunday")
   end
 
   # GET /exercises/1

@@ -16,11 +16,12 @@ class PublicationsController < ApplicationController
 
   end
 
-  def user_publication
-  end
-
   def main
     redirect_to exercises_url
+  end
+
+  def user_publications
+    @publications = current_user.publications
   end
 
   def like
