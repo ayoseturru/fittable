@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate, only: [:show, :destroy, :edit, :user]
+  after_action :update_manifiest, only: [:edit, :create, :update, :destroy]
 
   def new
     @user = User.new

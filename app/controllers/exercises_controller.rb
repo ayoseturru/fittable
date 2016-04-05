@@ -1,6 +1,7 @@
 class ExercisesController < ApplicationController
   before_action :set_exercise, only: [:show, :edit, :update, :destroy]
   before_action :authenticate
+  after_action :update_manifiest, only: [:edit, :create, :update, :destroy]
 
   # GET /exercises
   # GET /exercises.json

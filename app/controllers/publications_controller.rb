@@ -1,7 +1,7 @@
 class PublicationsController < ApplicationController
   before_action :set_publication, only: [:show, :edit, :update, :destroy, :like, :dislike]
   before_action :authenticate
-
+  after_action :update_manifiest, only: [:edit, :create, :update, :destroy]
 
   def new
     @publication = Publication.new

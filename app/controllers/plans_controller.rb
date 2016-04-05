@@ -1,6 +1,7 @@
 class PlansController < ApplicationController
   before_action :set_plan, only: [:show, :edit, :update, :destroy]
   before_action :authenticate
+  after_action :update_manifiest, only: [:edit, :create, :update, :destroy]
 
   # GET /plans
   # GET /plans.json
