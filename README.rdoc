@@ -1,5 +1,5 @@
 == README
 
-#Descripton
+# Descripton
 FitTable is a Ruby on Rails project that allow people to create table routines for gym. Users can create his own exercises and share with
 the community to allow other users to add it to his personal tables.
