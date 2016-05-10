@@ -2,7 +2,7 @@
 A Ruby on Rails and jQuery Mobile project that allows users to create and share gym exercises to customize his routine table for gym.
 
 ## Getting Started
-You must ve sure rails and ruby are installed in your computer.
+You must be sure rails and ruby are installed in your computer.
 
 ### Prerequisities
 
