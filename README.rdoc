@@ -1,10 +1,10 @@
 == README
 
-<h1>Descriptons</h1>
+# Descripton
 FitTable is a Ruby on Rails project that allow people to create table routines for gym. Users can create his own exercises and share with
 the community to allow other users to add it to his personal tables.
 
-<h1>Setup</h1>
+## Setup
 
 1. $ sudo yum install ImageMagick
 2. Clone the repo # $ git clone https://github.com/ayoseturru/fittable
