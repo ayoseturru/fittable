@@ -10,7 +10,7 @@ Requires install ImageMagick
 $ sudo apt-get install ImageMagick
 
 ```
-sudo gem install ImageMacgick
+sudo gem install ImageMagick
 ```
 
 ### Installing
@@ -28,10 +28,6 @@ Stay what the step will be
 
 ```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
 ## Built With
 
 * Ruby on Rails
@@ -40,8 +36,6 @@ Add additional notes about how to deploy this on a live system
 
 ## Authors
 
-* **Ayose Suárez** - *Initial work* - [PurpleBooth](https://github.com/ayoseturru)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Ayose Suárez** - [Twitter Profile](https://twitter.com/AyoseTurru)
 
 
