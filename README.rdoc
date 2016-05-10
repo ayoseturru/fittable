@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<h1>Descriptons</h1>
+FitTable is a Ruby on Rails project that allow people to create table routines for gym. Users can create his own exercises and share with
+the community to allow other users to add it to his personal tables.
 
-Things you may want to cover:
+<h1>Setup</h1>
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+1. $ sudo yum install ImageMagick
+2. Clone the repo # $ git clone https://github.com/ayoseturru/fittable
+3. $ cd fittable
+4. $ bundle 
+5. $ rake db:setup
+6. $ rails s
